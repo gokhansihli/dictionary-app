@@ -2,6 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import { fetchWord } from "./api";
+import Result from "./components/Result";
 
 function App() {
   const [word, setWord] = useState("");
@@ -29,6 +30,9 @@ function App() {
   return (
     <>
       <SearchBar word={word} setWord={setWord} onSearch={handleSearch} />
+      {loading && <p>Loading...</p>}
+      {error && { error }}
+      {result && <Result data={result} />}
     </>
   );
 }
